@@ -20,18 +20,18 @@ Feature: code-breaker submits guess
     Scenarios: 1 number correct
       | code | guess | mark |
       | 1234 | 1555  | +    |
-      | 1234 | 5155  | -    |
+      | 1234 | 2555  | -    |
 
     Scenarios: 2 numbers correct
       | code | guess | mark |
       | 1234 | 1255  | ++   |
-      | 1234 | 1525  | +-   |
+      | 1234 | 5135  | +-   |
       | 1234 | 5512  | --   |
 
     Scenarios: 3 numbers correct
       | code | guess | mark |
       | 1234 | 5234  | +++  |
-      | 1234 | 5251  | ++-  |
+      | 1234 | 5214  | ++-  |
       | 1234 | 1523  | +--  |
       | 1234 | 5123  | ---  |
 
