@@ -24,6 +24,18 @@ module CodeBreaker
         output.should_receive(:puts).with('++++')
         game.guess('1234')
       end
+
+      it "sends an error when the guess is too short" do
+        game.start('1234')
+        output.should_receive(:puts).with("Your guess is too short. Try again!")
+        game.guess('123')
+      end
+
+      it "sends and error when the guess is too long" do
+        game.start('1234')
+        output.should_receive(:puts).with("Your guess is too long. Try again!")
+        game.guess('12345')
+      end
     end
 
   end

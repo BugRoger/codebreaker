@@ -23,6 +23,10 @@ Then /^the mark should be "([^"]*)"$/ do |mark|
   output.messages.should include(mark)
 end
 
+Then /^I should not see a mark$/ do
+  output.messages.should_not be_any { |m| m =~ /^[+-]{1,4}$/ }
+end
+
 
 class Output
   def messages
@@ -37,3 +41,10 @@ end
 def output
   @output ||= Output.new
 end
+
+RSpec::Matchers.define :include_substring do |expected|
+  match do |actual|
+    actual.include?(expected)
+  end
+end
+
