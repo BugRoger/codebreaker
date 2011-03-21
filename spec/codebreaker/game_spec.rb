@@ -27,14 +27,20 @@ module CodeBreaker
 
       it "sends an error when the guess is too short" do
         game.start('1234')
-        output.should_receive(:puts).with("Your guess is too short. Try again!")
+        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
         game.guess('123')
       end
 
       it "sends and error when the guess is too long" do
         game.start('1234')
-        output.should_receive(:puts).with("Your guess is too long. Try again!")
+        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
         game.guess('12345')
+      end
+
+      it "sends an error when the guess is empty" do
+        game.start('1234')
+        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
+        game.guess('')
       end
     end
 

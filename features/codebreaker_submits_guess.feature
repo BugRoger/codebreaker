@@ -58,22 +58,24 @@ Feature: code-breaker submits guess
       | 1134 | 5111  | +-   |
 
     
-  Scenario Outline: guess is too short
+  Scenario Outline: invalid guess 
     Given the secret code is "<code>"
     When I guess "<guess>"
-    Then I should see "Your guess is too short. Try again!" 
+    Then I should see "Your guess is invalid. It must be exactly 4 numbers." 
     But I should not see a mark 
 
     Scenarios: too short 
       | code | guess | 
-      | 1234 |       |
       | 1234 | 1     |
       | 1234 | 12    | 
       | 1234 | 123   |
 
-  Scenario: guess is too long 
-    Given the secret code is "1234"
-    When I guess "12345"
-    Then I should see "Your guess is too long. Try again!"
-    But I should not see a mark 
+    Scenarios: too long
+      | code | guess |
+      | 1234 | 12345 |
 
+    Scenarios: non-numerical
+      | code | guess | 
+      | 1234 |       |
+      | 1234 | abcd  |
+      | 1234 | 123a  |

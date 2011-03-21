@@ -12,26 +12,19 @@ module CodeBreaker
     end
 
     def guess(guess)
-      if valid?(guess)
-        marker = Marker.new(@secret, guess)
-        @output.puts '+' * marker.exact_match_count + '-' * marker.number_match_count
+      unless valid?(guess)
+        @output.puts "Your guess is invalid. It must be exactly 4 numbers." 
+        return        
       end
+
+      marker = Marker.new(@secret, guess)
+      @output.puts '+' * marker.exact_match_count + '-' * marker.number_match_count
     end
 
     private 
 
     def valid?(guess)
-      if guess.length < 4  
-        @output.puts "Your guess is too short. Try again!" 
-        return false
-      end
-
-      if guess.length > 4 
-        @output.puts "Your guess is too long. Try again!"
-        return false
-      end
-
-      true
+      guess =~ /^\d{4}$/
     end
   end
 end
