@@ -19,6 +19,10 @@ module CodeBreaker
 
       marker = Marker.new(@secret, guess)
       @output.puts '+' * marker.exact_match_count + '-' * marker.number_match_count
+
+      if marker.exact_match_count == 4
+        @output.puts "Congratulations. Your guess is correct. The secret was #{@secret}."
+      end
     end
 
     private 

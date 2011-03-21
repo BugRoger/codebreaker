@@ -13,6 +13,10 @@ Feature: code-breaker submits guess
   for each of the exact matches in the first, third and fourth positions. The
   number match in the second position would be ignored.
 
+  The guess must be exactly 4 numbers. When the guess contains more or less
+  numbers an error message is shown. Same in case the guess is empty or
+  contains non-digit characters.
+
   Scenario Outline: submit guess 
     Given the secret code is "<code>"
     When I guess "<guess>"
@@ -79,3 +83,9 @@ Feature: code-breaker submits guess
       | 1234 |       |
       | 1234 | abcd  |
       | 1234 | 123a  |
+
+
+  Scenario: correct guess
+    Given the secret code is "1234"
+    When I guess "1234"
+    Then I should see "Congratulations. Your guess is correct. The secret was 1234."

@@ -19,28 +19,36 @@ module CodeBreaker
     end
 
     describe "#guess" do
-      it "sends the mark to output" do
+      before(:each) do
         game.start('1234')
+      end
+
+      it "sends the mark to output" do
         output.should_receive(:puts).with('++++')
         game.guess('1234')
       end
 
-      it "sends an error when the guess is too short" do
-        game.start('1234')
-        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
-        game.guess('123')
+      context "invalid guess" do
+        before(:each) do
+          output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
+        end
+
+        it "sends an error when the guess is too short" do
+          game.guess('123')
+        end
+
+        it "sends and error when the guess is too long" do
+          game.guess('12345')
+        end
+
+        it "sends an error when the guess is empty" do
+          game.guess('')
+        end
       end
 
-      it "sends and error when the guess is too long" do
-        game.start('1234')
-        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
-        game.guess('12345')
-      end
-
-      it "sends an error when the guess is empty" do
-        game.start('1234')
-        output.should_receive(:puts).with("Your guess is invalid. It must be exactly 4 numbers.")
-        game.guess('')
+      it "sends congratulations when the guess is correct" do
+        output.should_receive(:puts).with('Congratulations. Your guess is correct. The secret was 1234.')
+        game.guess('1234')
       end
     end
 
