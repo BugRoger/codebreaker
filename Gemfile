@@ -5,6 +5,11 @@ group :development do
   gem "rspec"
   gem "cucumber"
   gem "ZenTest"
-  gem "autotest-growl"
-  gem "autotest-fsevent"
+end
+
+platform :ruby do
+  group :osx do
+    gem "autotest-growl"
+    gem "autotest-fsevent"
+  end
 end

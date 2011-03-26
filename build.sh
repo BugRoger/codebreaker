@@ -5,5 +5,5 @@ rvm use "1.9.2@codebreaker"
 who am i
 rvm info
 
-bundle install
+bundle install --without osx
 cucumber
