@@ -2,5 +2,5 @@
 #source "$HOME/.rvm/scripts/rvm"
 #rvm use "1.9.2@codebreaker"
 
-bundle install --without osx
+/opt/ruby/bin/bundle install --without osx
 cucumber -f junit -o test-reports
