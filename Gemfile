@@ -5,6 +5,7 @@ group :development do
   gem "rspec"
   gem "cucumber"
   gem "ZenTest"
+  gem "ci_reporter"
 end
 
 platform :ruby do
