@@ -7,6 +7,7 @@ group :development do
   gem "ZenTest"
   gem "ci_reporter"
   gem "headless"
+  gem "capybara"
 end
 
 if RUBY_PLATFORM =~ /darwin/

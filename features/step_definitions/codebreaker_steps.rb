@@ -27,6 +27,11 @@ Then /^I should not see a mark$/ do
   output.messages.should_not be_any { |m| m =~ /^[+-]{1,4}$/ }
 end
 
+Then /^I should be able to visit Google$/ do
+  visit "/"
+end
+
+
 
 class Output
   def messages
