@@ -8,8 +8,8 @@ group :development do
   gem "ci_reporter"
 end
 
-platform :ruby do
-  group :osx do
+if RUBY_PLATFORM =~ /darwin/
+ group :osx do
     gem "autotest-growl", :require => false
     gem "autotest-fsevent", :require => false
   end
