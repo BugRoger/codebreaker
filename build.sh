@@ -1,5 +1,6 @@
 !/bin/bash -e
-rvm use "1.9.2@codebreaker"
+[[ -s ".rvmrc" ]] && source .rvmrc
+exec $*
 
-bundle install --without=osx
-cucumber -f junit -o test-reports
+#bundle install --without=osx
+#cucumber -f junit -o test-reports
